@@ -41,24 +41,24 @@ CREATE TABLE besoin_argent (
 CREATE TABLE dons (
     id SERIAL PRIMARY KEY,
     id_users INTEGER REFERENCES users(id),
-    id_ville INTEGER REFERENCES ville(id),
     date timestamp default current_timestamp
 );
+
 
 CREATE TABLE dons_nature (
     id SERIAL PRIMARY KEY,
     nom VARCHAR(100),
-    id_ville INTEGER REFERENCES dons(id)
+    id_dons INTEGER REFERENCES dons(id)
 );
 
 CREATE TABLE dons_materiaux (
     id SERIAL PRIMARY KEY,
     nom VARCHAR(100),
-    id_ville INTEGER REFERENCES dons(id)
+    id_dons INTEGER REFERENCES dons(id)
 );
 
 CREATE TABLE dons_argent (
     id SERIAL PRIMARY KEY,
     vola DOUBLE PRECISION,
-    id_ville INTEGER REFERENCES dons(id)
+    id_dons INTEGER UNIQUE REFERENCES dons(id)
 );

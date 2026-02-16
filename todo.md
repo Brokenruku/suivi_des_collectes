@@ -17,3 +17,8 @@ INTEGRATION PHP
         creer user
     connection.php
         pdo pour connection a la base
+    ville.php 
+        prendre les ville existant pour chaque region
+        FONCTION 
+            getVilleAvecBesoin() 
+                retourne tout les besoin d un ville
