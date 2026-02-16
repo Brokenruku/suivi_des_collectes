@@ -3,6 +3,15 @@
 use app\controllers\LoginController;
 use app\controllers\AccueilController;
 use app\controllers\DonController;
+use app\controllers\AchatController;
+use app\controllers\RecapController;
+
+Flight::route('GET /recap', [RecapController::class, 'index']);
+Flight::route('GET /recap/data', [RecapController::class, 'data']);
+
+Flight::route('GET /achats', [AchatController::class, 'index']);
+Flight::route('POST /achats', [AchatController::class, 'create']);
+Flight::route('GET /achats/@id:[0-9]+', [AchatController::class, 'show']);
 
 Flight::route('GET /', function () {
     Flight::redirect('/login');

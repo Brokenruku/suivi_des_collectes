@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,78 +8,95 @@
 
   <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
 </head>
+
 <body class="bg-light">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container">
-    <a class="navbar-brand" href="/accueil">BNGRC</a>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="/accueil">BNGRC</a>
 
-    <div class="ms-auto">
-      <a class="btn btn-outline-light btn-sm" href="/logout">Déconnexion</a>
+      <div class="ms-auto">
+        <a class="btn btn-outline-light btn-sm" href="/logout">Déconnexion</a>
+      </div>
     </div>
-  </div>
-</nav>
+  </nav>
 
-<div class="container py-4">
-  <div class="d-flex align-items-center justify-content-between mb-3">
-    <h1 class="h4 mb-0">Besoins par ville</h1>
-    <a class="btn btn-primary btn-sm" href="/don">Faire un don</a>
-  </div>
+  <div class="container py-4">
+    <div class="d-flex align-items-center justify-content-between mb-3">
+      <h1 class="h4 mb-0">Besoins par ville</h1>
+      <a href="/achats" class="btn btn-primary">Achats</a>
 
-  <div class="row g-3">
-    <?php foreach (($villes ?? []) as $v): ?>
-      <?php
+      <a class="btn btn-primary btn-sm" href="/don">Faire un don</a>
+    </div>
+
+    <div class="row g-3">
+      <?php foreach (($villes ?? []) as $v): ?>
+        <?php
         $nature = !empty($v['besoin_nature']) ? explode('||', $v['besoin_nature']) : [];
         $mat    = !empty($v['besoin_materiaux']) ? explode('||', $v['besoin_materiaux']) : [];
         $argent = $v['besoin_argent'] ?? null;
-      ?>
+        $achats = $v['total_achats'] ?? 0;
+        ?>
 
-      <div class="col-12 col-md-6 col-lg-4">
-        <div class="card shadow-sm h-100">
-          <div class="card-body">
-            <h5 class="card-title mb-1"><?= htmlspecialchars($v['ville'] ?? '') ?></h5>
-            <p class="text-muted mb-3"><?= htmlspecialchars($v['region'] ?? '') ?></p>
+        <div class="col-12 col-md-6 col-lg-4">
+          <div class="card shadow-sm h-100">
+            <div class="card-body">
+              <h5 class="card-title mb-1"><?= htmlspecialchars($v['ville'] ?? '') ?></h5>
+              <p class="text-muted mb-3"><?= htmlspecialchars($v['region'] ?? '') ?></p>
 
-            <div class="mb-3">
-              <div class="fw-semibold">Besoins nature</div>
-              <?php if (!$nature): ?>
-                <div class="text-muted small">Aucun</div>
-              <?php else: ?>
-                <div class="d-flex flex-wrap gap-1 mt-1">
-                  <?php foreach ($nature as $n): ?>
-                    <span class="badge text-bg-success"><?= htmlspecialchars($n) ?></span>
-                  <?php endforeach; ?>
-                </div>
-              <?php endif; ?>
-            </div>
-
-            <div class="mb-3">
-              <div class="fw-semibold">Besoins matériaux</div>
-              <?php if (!$mat): ?>
-                <div class="text-muted small">Aucun</div>
-              <?php else: ?>
-                <div class="d-flex flex-wrap gap-1 mt-1">
-                  <?php foreach ($mat as $m): ?>
-                    <span class="badge text-bg-warning"><?= htmlspecialchars($m) ?></span>
-                  <?php endforeach; ?>
-                </div>
-              <?php endif; ?>
-            </div>
-
-            <div>
-              <div class="fw-semibold">Besoin argent</div>
-              <div class="<?= $argent ? 'text-danger fw-bold' : 'text-muted' ?>">
-                <?= $argent ? number_format((float)$argent, 0, ',', ' ') . ' Ar' : 'Aucun' ?>
+              <div class="mb-3">
+                <div class="fw-semibold">Besoins nature</div>
+                <?php if (!$nature): ?>
+                  <div class="text-muted small">Aucun</div>
+                <?php else: ?>
+                  <div class="d-flex flex-wrap gap-1 mt-1">
+                    <?php foreach ($nature as $n): ?>
+                      <span class="badge text-bg-success"><?= htmlspecialchars($n) ?></span>
+                    <?php endforeach; ?>
+                  </div>
+                <?php endif; ?>
               </div>
-            </div>
 
+              <div class="mb-3">
+                <div class="fw-semibold">Besoins matériaux</div>
+                <?php if (!$mat): ?>
+                  <div class="text-muted small">Aucun</div>
+                <?php else: ?>
+                  <div class="d-flex flex-wrap gap-1 mt-1">
+                    <?php foreach ($mat as $m): ?>
+                      <span class="badge text-bg-warning"><?= htmlspecialchars($m) ?></span>
+                    <?php endforeach; ?>
+                  </div>
+                <?php endif; ?>
+              </div>
+
+              <div>
+                <div class="fw-semibold">Besoin argent</div>
+                <div class="<?= $argent ? 'text-danger fw-bold' : 'text-muted' ?>">
+                  <?= $argent ? number_format((float)$argent, 0, ',', ' ') . ' Ar' : 'Aucun' ?>
+                </div>
+              </div>
+              
+              <div class="mt-3">
+                <div class="fw-semibold">Achats réalisés</div>
+                <div class="<?= $achats > 0 ? 'text-primary fw-bold' : 'text-muted' ?>">
+                  <?= $achats > 0 ? number_format((float)$achats, 0, ',', ' ') . ' Ar' : 'Aucun' ?>
+                </div>
+
+                <a class="btn btn-outline-primary btn-sm mt-2"
+                  href="/achats?ville=<?= (int)$v['id'] ?>">
+                  Voir achats de cette ville
+                </a>
+              </div>
+
+            </div>
           </div>
         </div>
-      </div>
-    <?php endforeach; ?>
+      <?php endforeach; ?>
+    </div>
   </div>
-</div>
 
-<script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
+  <script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
+
 </html>

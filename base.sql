@@ -26,13 +26,11 @@ CREATE TABLE ville (
 
 CREATE TABLE objet_nature (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  pu DOUBLE,
   nom VARCHAR(100)
 );
 
 CREATE TABLE objet_materiaux (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  pu DOUBLE,
   nom VARCHAR(100)
 );
 
@@ -113,12 +111,12 @@ CREATE TABLE achats (
 
 CREATE TABLE achat_lignes (
   id SERIAL PRIMARY KEY,
-  id_achat INT NOT NULL,
-  type_objet VARCHAR(20) NOT NULL, -- 'nature' ou 'materiaux'
+  id_achat BIGINT UNSIGNED NOT NULL,
+  type_objet VARCHAR(20) NOT NULL,
   id_objet INT NOT NULL,
   qte INT NOT NULL,
   pu DOUBLE PRECISION NOT NULL,
   montant DOUBLE PRECISION NOT NULL,
-  FOREIGN KEY (id_achat) REFERENCES achats(id)
+  FOREIGN KEY (id_achat) REFERENCES achats(id) ON DELETE CASCADE
 );
 
