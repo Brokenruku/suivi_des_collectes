@@ -9,3 +9,9 @@ CONCEPTION BASE DE DONNE
             dons_nature, dons_materiaux, dons_argent foreign key dons
         INSERTION 
             chaque table doit avoir des tonne test
+
+INTEGRATION PHP 
+    login.php  
+        connection user
+    register.php
+        creer user
