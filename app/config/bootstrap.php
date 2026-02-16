@@ -24,7 +24,8 @@ $app = Flight::app();
  */
 $config = require('config.php');
 $base = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/suivi_des_collectes/public');
-\Flight::set('flight.base_url', $base);
+Flight::set('flight.base_url', '');
+
 
 
 /*

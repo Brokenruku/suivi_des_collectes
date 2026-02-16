@@ -10,10 +10,11 @@
         </div>
 
         <form method="POST" action="/login">
-          <input type="email" name="email" placeholder="Email" required>
-          <input type="password" name="password" placeholder="Mot de passe" required>
+          <input type="email" name="mail" placeholder="Email" required>
+          <input type="password" name="mdp" placeholder="Mot de passe" required>
           <button type="submit">Login</button>
         </form>
+
 
         <?php if (!empty($error)): ?>
           <p style="color:red"><?= htmlspecialchars($error) ?></p>

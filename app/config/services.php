@@ -17,12 +17,13 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $app->map('db', function () {
+
   $host = 'localhost';
   $port = '3306';
   $dbname = '4064_4078_4107';
   $user = 'root';
-  $pass = ''; 
-
+  $pass = '';
+  
   $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";
   $pdo = new PDO($dsn, $user, $pass);
 
@@ -31,6 +32,7 @@ $app->map('db', function () {
 
   return $pdo;
 });
+
 
 
 
