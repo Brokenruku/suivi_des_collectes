@@ -16,17 +16,15 @@ if (session_status() === PHP_SESSION_NONE) {
   session_start();
 }
 
-// ---- PDO PostgreSQL connection registered into Flight as "db" ----
 $app->map('db', function () {
 
   $host = 'localhost';
   $port = '5432';
   $dbname = '4064_4078_4107';
   $user = 'postgres';
-  $pass = '';
+  $pass = 'cristelle31';
 
   $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;";
-
   $pdo = new PDO($dsn, $user, $pass);
 
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -34,4 +32,5 @@ $app->map('db', function () {
 
   return $pdo;
 });
+
 
