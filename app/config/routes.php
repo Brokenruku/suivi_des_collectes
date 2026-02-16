@@ -12,3 +12,10 @@ Flight::route('POST /login', [LoginController::class, 'login']);
 
 Flight::route('GET /accueil', [AccueilController::class, 'index']);
 
+Flight::route('GET /logout', function () {
+
+    session_unset();
+    session_destroy();
+
+    Flight::redirect('/login');
+});

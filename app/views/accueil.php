@@ -28,7 +28,6 @@
   <div class="row g-3">
     <?php foreach (($villes ?? []) as $v): ?>
       <?php
-        // Si tu utilises GROUP_CONCAT avec '||'
         $nature = !empty($v['besoin_nature']) ? explode('||', $v['besoin_nature']) : [];
         $mat    = !empty($v['besoin_materiaux']) ? explode('||', $v['besoin_materiaux']) : [];
         $argent = $v['besoin_argent'] ?? null;
