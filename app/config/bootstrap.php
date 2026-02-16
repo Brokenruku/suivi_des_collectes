@@ -22,6 +22,9 @@ $app = Flight::app();
  * will be returned by the require statement where you can assign it to a var.
  */
 $config = require('config.php');
+$base = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/suivi_des_collectes/public');
+\Flight::set('flight.base_url', $base);
+
 
 /*
  * Load the services file.

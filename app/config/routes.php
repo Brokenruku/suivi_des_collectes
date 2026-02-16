@@ -12,7 +12,7 @@ use app\controllers\AccueilController;
  * @var Engine $app
  */
 
-$base = Flight::request()->base;
+$base = \Flight::get('flight.base_url');
 
 $router->group('', function (Router $router) use ($base) {
 

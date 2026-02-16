@@ -24,7 +24,7 @@
    Cessna 402  (Wings)
    by Dick Williams, rjw1@tyrell.net
 */
-$base = rtrim(dirname($_SERVER['SCRIPT_NAME']), '/FINAL/suivi_des_collectes/public');
+
 
 $ds = DIRECTORY_SEPARATOR;
 require(__DIR__. $ds . '..' . $ds . 'app' . $ds . 'config' . $ds . 'bootstrap.php');

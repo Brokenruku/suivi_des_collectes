@@ -1,4 +1,4 @@
-<?php require __DIR__ . '/layouts/header.php'; ?>
+
 <?php $base = \Flight::get('flight.base_url'); ?>
 
 <div class="container-fluid">
@@ -10,7 +10,7 @@
           <h3 class="card-title">Login</h3>
         </div>
 
-        <form method="post" action="<?= $base ?>login">
+        <form method="post" action="<?= $base ?>/accueil">
           <div class="card-body">
             <div class="form-group">
               <label for="email">Email</label>
@@ -35,4 +35,3 @@
   </div>
 </div>
 
-<?php require __DIR__ . '/layouts/footer.php'; ?>
