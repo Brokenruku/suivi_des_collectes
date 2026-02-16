@@ -101,4 +101,24 @@ CREATE TABLE dons_argent (
 ALTER TABLE dons_nature ADD qte INT NOT NULL DEFAULT 1;
 ALTER TABLE dons_materiaux ADD qte INT NOT NULL DEFAULT 1;
 
+CREATE TABLE achats (
+  id SERIAL PRIMARY KEY,
+  id_users INT NOT NULL,
+  id_ville INT NOT NULL,
+  total_argent DOUBLE PRECISION NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_users) REFERENCES users(id),
+  FOREIGN KEY (id_ville) REFERENCES ville(id)
+);
+
+CREATE TABLE achat_lignes (
+  id SERIAL PRIMARY KEY,
+  id_achat INT NOT NULL,
+  type_objet VARCHAR(20) NOT NULL, -- 'nature' ou 'materiaux'
+  id_objet INT NOT NULL,
+  qte INT NOT NULL,
+  pu DOUBLE PRECISION NOT NULL,
+  montant DOUBLE PRECISION NOT NULL,
+  FOREIGN KEY (id_achat) REFERENCES achats(id)
+);
 
