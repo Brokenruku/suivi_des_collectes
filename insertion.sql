@@ -1,34 +1,31 @@
-INSERT INTO region (nom) VALUES
-('Analamanga'),
-('Atsinanana'),
-('Haute Matsiatra');
+INSERT INTO objet_nature (nom, prix_unitaire) VALUES
+('Riz', 2500),
+('Huile', 8000),
+('Sucre', 3500),
+('Haricots', 4000),
+('Eau potable', 1000);
 
-INSERT INTO ville (nom, id_region) VALUES
-('Antananarivo', 1),
-('Toamasina', 2),
-('Fianarantsoa', 3),
-('Ambohidratrimo', 1),
-('Vohipeno', 3);
+INSERT INTO objet_materiaux (nom, prix_unitaire) VALUES
+('Tôle', 30000),
+('Clou', 200),
+('Ciment', 45000),
+('Bois', 25000),
+('Briques', 1500);
 
-INSERT INTO besoin_nature (nom, id_ville) VALUES
-('Riz', 1),
-('Huile', 1),
-('Eau potable', 2),
-('Légumes', 3),
-('Farine', 4),
-('Sel', 5);
+INSERT INTO besoin_nature (id_objet_nature, id_ville, qte) VALUES
+(1, 1, 1),
+(2, 1, 1), 
+(3, 2, 1), 
+(4, 2, 1), 
+(5, 3, 1); 
 
-INSERT INTO besoin_materiaux (nom, id_ville) VALUES
-('Tôles', 1),
-('Briques', 1),
-('Ciment', 2),
-('Bois', 3),
-('Couvertures', 4),
-('Bâches', 5);
+INSERT INTO besoin_materiaux (id_objet_materiaux, id_ville, qte) VALUES
+(1, 1, 1), 
+(2, 1, 1), 
+(3, 2, 1), 
+(4, 3, 1); 
 
 INSERT INTO besoin_argent (vola, id_ville) VALUES
-(1500000, 1),
-(800000, 2),
-(500000, 3),
-(300000, 4),
-(200000, 5);
+(500000, 1),
+(300000, 2),
+(200000, 3);

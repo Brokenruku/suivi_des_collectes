@@ -11,7 +11,7 @@
 
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
   <div class="container">
-    <a class="navbar-brand" href="/accueil">Suivi des collectes</a>
+    <a class="navbar-brand" href="/accueil">BNGRC</a>
 
     <div class="ms-auto">
       <a class="btn btn-outline-light btn-sm" href="/logout">Déconnexion</a>

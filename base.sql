@@ -24,18 +24,38 @@ CREATE TABLE ville (
   FOREIGN KEY (id_region) REFERENCES region(id)
 );
 
+CREATE TABLE objet_nature (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  pu DOUBLE,
+  nom VARCHAR(100)
+);
+
+CREATE TABLE objet_materiaux (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  pu DOUBLE,
+  nom VARCHAR(100)
+);
+
+ALTER TABLE objet_nature
+ADD prix_unitaire DECIMAL(12,2) NOT NULL DEFAULT 0;
+
+ALTER TABLE objet_materiaux
+ADD prix_unitaire DECIMAL(12,2) NOT NULL DEFAULT 0;
+
 CREATE TABLE besoin_nature (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  nom VARCHAR(100),
+  id_objet_nature INT,
   id_ville INT,
-  FOREIGN KEY (id_ville) REFERENCES ville(id)
+  FOREIGN KEY (id_ville) REFERENCES ville(id),
+  FOREIGN KEY (id_objet_nature) REFERENCES objet_nature(id)
 );
 
 CREATE TABLE besoin_materiaux (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  nom VARCHAR(100),
+  id_objet_materiaux INT,
   id_ville INT,
-  FOREIGN KEY (id_ville) REFERENCES ville(id)
+  FOREIGN KEY (id_ville) REFERENCES ville(id),
+  FOREIGN KEY (id_objet_materiaux) REFERENCES objet_materiaux(id)
 );
 
 CREATE TABLE besoin_argent (
@@ -44,6 +64,9 @@ CREATE TABLE besoin_argent (
   id_ville INT UNIQUE,
   FOREIGN KEY (id_ville) REFERENCES ville(id)
 );
+
+ALTER TABLE besoin_nature ADD qte INT NOT NULL DEFAULT 1;
+ALTER TABLE besoin_materiaux ADD qte INT NOT NULL DEFAULT 1;
 
 CREATE TABLE dons (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -54,16 +77,18 @@ CREATE TABLE dons (
 
 CREATE TABLE dons_nature (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  nom VARCHAR(100),
+  id_objet_nature INT,
   id_dons INT,
-  FOREIGN KEY (id_dons) REFERENCES dons(id)
+  FOREIGN KEY (id_dons) REFERENCES dons(id),
+  FOREIGN KEY (id_objet_nature) REFERENCES objet_nature(id)
 );
 
 CREATE TABLE dons_materiaux (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  nom VARCHAR(100),
+  id_objet_materiaux INT,
   id_dons INT,
-  FOREIGN KEY (id_dons) REFERENCES dons(id)
+  FOREIGN KEY (id_dons) REFERENCES dons(id),
+  FOREIGN KEY (id_objet_materiaux) REFERENCES objet_materiaux(id)
 );
 
 CREATE TABLE dons_argent (
@@ -72,3 +97,8 @@ CREATE TABLE dons_argent (
   id_dons INT UNIQUE,
   FOREIGN KEY (id_dons) REFERENCES dons(id)
 );
+
+ALTER TABLE dons_nature ADD qte INT NOT NULL DEFAULT 1;
+ALTER TABLE dons_materiaux ADD qte INT NOT NULL DEFAULT 1;
+
+
