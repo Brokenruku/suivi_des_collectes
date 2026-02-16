@@ -1,3 +1,5 @@
+<?php require __DIR__ . '/layouts/header.php'; ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 
@@ -24,9 +26,6 @@
   <div class="container py-4">
     <div class="d-flex align-items-center justify-content-between mb-3">
       <h1 class="h4 mb-0">Besoins par ville</h1>
-      <a href="/achats" class="btn btn-primary">Achats</a>
-      <a href="/recap" class="btn btn-outline-dark btn-sm">Récapitulatif</a>
-      <a class="btn btn-primary btn-sm" href="/don">Faire un don</a>
     </div>
 
     <div class="row g-3">
@@ -100,3 +99,5 @@
 </body>
 
 </html>
+
+<?php require __DIR__ . '/layouts/footer.php'; ?>

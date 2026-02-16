@@ -23,7 +23,7 @@ $app->set('flight.views.extension', '.php');
 return [
   'database' => [
     'host' => 'localhost',
-    'dbname' => '4064_4078',
+    'dbname' => '4064_4078_4107',
     'user' => 'root',
     'password' => '',
     'port' => 3306

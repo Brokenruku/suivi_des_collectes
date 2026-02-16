@@ -7,19 +7,38 @@
 
       <div class="card card-primary">
         <div class="card-header">
-          <h3 class="card-title">Login</h3>
+          <h3 class="card-title">Register</h3>
         </div>
 
-        <form method="post" action="<?= $base ?>login">
+        <form method="post" action="<?= $base ?>register">
             <div class="card-body">
-                <div class="form-group">
+                <div class="form-group mb-3">
                     <label for="nom">Nom</label>
-                    <input type=text class="form-control" id="nom" name="nom" placeholder="Entrer nom">
+                    <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrer votre nom" required>
                 </div>
-                <div class="form-group">
-                    <label for="email">Email</label>
-                    <input type=email class="form-control" id="email" name="email" placeholder="Entrer email">
+                <div class="form-group mb-3">
+                    <label for="mail">Email</label>
+                    <input type="email" class="form-control" id="mail" name="mail" placeholder="Entrer votre email" required>
                 </div>
+                <div class="form-group mb-3">
+                    <label for="mdp">Mot de passe</label>
+                    <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Entrer votre mot de passe" required>
+                </div>
+                <div class="form-group mb-3">
+                    <label for="numero">Numéro de téléphone</label>
+                    <input type="text" class="form-control" id="numero" name="numero" placeholder="Entrer votre numéro">
+                </div>
+                <?php if (!empty($error)): ?>
+                  <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>
+                <?php endif; ?>
+                <?php if (!empty($success)): ?>
+                  <div class="alert alert-success"><?= htmlspecialchars($success) ?></div>
+                <?php endif; ?>
+            </div>
+            <div class="card-footer">
+                <button type="submit" class="btn btn-primary">Register</button>
+                <a href="<?= $base ?>login" class="btn btn-secondary">Login</a>
+            </div>
         </form>
 
       </div>

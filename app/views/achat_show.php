@@ -1,3 +1,5 @@
+<?php require __DIR__ . '/layouts/header.php'; ?>
+
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -61,3 +63,5 @@
 <script src="/assets/bootstrap/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
+
+<?php require __DIR__ . '/layouts/footer.php'; ?>

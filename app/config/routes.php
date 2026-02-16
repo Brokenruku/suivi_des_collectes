@@ -20,6 +20,9 @@ Flight::route('GET /', function () {
 Flight::route('GET /login', [LoginController::class, 'showLogin']);
 Flight::route('POST /login', [LoginController::class, 'login']);
 
+Flight::route('GET /register', [LoginController::class, 'showRegister']);
+Flight::route('POST /register', [LoginController::class, 'register']);
+
 Flight::route('GET /don', [DonController::class, 'form']);
 Flight::route('POST /don', [DonController::class, 'submit']);
 

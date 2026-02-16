@@ -1,3 +1,4 @@
+<?php require __DIR__ . '/layouts/header.php'; ?>
 
 <!DOCTYPE html>
 <html lang="fr">
@@ -228,3 +229,5 @@
 </script>
 </body>
 </html>
+
+<?php require __DIR__ . '/layouts/footer.php'; ?>
