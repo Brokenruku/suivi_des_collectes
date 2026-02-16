@@ -5,7 +5,7 @@ CONCEPTION BASE DE DONNE
             region
             ville foreign key table region
             besoin_nature, besoin_materiaux, besoin_argent foreign key ville
-            dons foreign key ville, users
+            dons foreign key users
             dons_nature, dons_materiaux, dons_argent foreign key dons
         INSERTION 
             chaque table doit avoir des tonne test
