@@ -21,7 +21,7 @@ $app->map('db', function () {
 
   $host = 'localhost';
   $port = '5432';
-  $dbname = 'final';
+  $dbname = '4064_4078_4107';
   $user = 'postgres';
   $pass = '';
 

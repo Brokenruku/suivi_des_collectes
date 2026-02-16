@@ -10,14 +10,15 @@ use flight\net\Router;
  * @var Engine $app
  */
 
-$router->group('', function (Router $router) {
+$base = Flight::request()->base;
 
-  $router->get('/', function () {
-    Flight::redirect('/login');
+$router->group('', function (Router $router) use ($base) {
+
+  Flight::route('GET /', function () use ($base) {
+    Flight::redirect($base . '/login');
   });
 
-  $router->get('/login', function () {
-    Flight::render('login');
+  Flight::route('GET /login', function () {
+    Flight::render('login'); 
   });
-
 }, [SecurityHeadersMiddleware::class]);
