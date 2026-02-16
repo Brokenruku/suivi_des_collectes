@@ -25,7 +25,7 @@
     <div class="d-flex align-items-center justify-content-between mb-3">
       <h1 class="h4 mb-0">Besoins par ville</h1>
       <a href="/achats" class="btn btn-primary">Achats</a>
-
+      <a href="/recap" class="btn btn-outline-dark btn-sm">Récapitulatif</a>
       <a class="btn btn-primary btn-sm" href="/don">Faire un don</a>
     </div>
 
