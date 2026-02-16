@@ -17,7 +17,14 @@ INTEGRATION PHP
         creer user
     connection.php
         pdo pour connection a la base
-    ville.php 
+    
+    DonsModel.php 
+        FONCTION 
+            getDons()
+                prendre tout les effectuer
+            insertDons()
+                insert un ligne de dons
+    VilleModel.php 
         prendre les ville existant pour chaque region
         FONCTION 
             getVilleAvecBesoin() 

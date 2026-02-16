@@ -1,5 +1,5 @@
 <?php
-function insertDon($pdo, $id_user, $natures, $materiaux, $argent){
+function insertDons($pdo, $id_user, $natures, $materiaux, $argent){
 
     try {
         $pdo->beginTransaction();
