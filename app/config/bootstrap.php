@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 /*
  * This is the file called bootstrap who's job is to make sure that all the

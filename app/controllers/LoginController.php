@@ -1,56 +1,30 @@
 <?php
-
 namespace app\controllers;
 
+use Flight;
 use app\models\UserModel;
-use flight\Engine;
-use PDOException;
 
 class LoginController
 {
-  protected Engine $app;
-
-  public function __construct($app)
-  {
-    $this->app = $app;
-  }
-
-  public function getUsers()
-  {
-    try {
-      $db = $this->app->db();               // ✅ use Flight PDO
-      $userModel = new UserModel($db);
-      $users = $userModel->getAllExcept(0);
-
-      $this->app->json($users, 200, true, 'utf-8', JSON_PRETTY_PRINT);
-    } catch (PDOException $e) {
-      $this->app->json([
-        'error' => 'Database error',
-        'message' => $e->getMessage()
-      ], 500);
+    public static function showLogin()
+    {
+        Flight::render('login');
     }
-  }
 
-  public function getUser($id)
-  {
-    try {
-      $db = $this->app->db();               // ✅ use Flight PDO
-      $userModel = new UserModel($db);
-      $user = $userModel->getById($id);
+    public static function login()
+    {
+        $email = $_POST['email'] ?? '';
+        $mdp   = $_POST['mdp'] ?? '';
 
-      if ($user) {
-        $this->app->json($user, 200, true, 'utf-8', JSON_PRETTY_PRINT);
-      } else {
-        $this->app->json([
-          'error' => 'User not found',
-          'id' => (int)$id
-        ], 404);
-      }
-    } catch (PDOException $e) {
-      $this->app->json([
-        'error' => 'Database error',
-        'message' => $e->getMessage()
-      ], 500);
+        $pdo  = Flight::db();
+        $user = UserModel::checkLogin($pdo, $email, $mdp);
+
+        if ($user) {
+            $_SESSION['user'] = $user;
+            Flight::redirect('/accueil');
+            return;
+        }
+
+        Flight::render('login', ['error' => 'Login incorrect']);
     }
-  }
 }

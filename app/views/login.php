@@ -1,4 +1,3 @@
-
 <?php $base = \Flight::get('flight.base_url'); ?>
 
 <div class="container-fluid">
@@ -10,28 +9,19 @@
           <h3 class="card-title">Login</h3>
         </div>
 
-        <form method="post" action="<?= $base ?>/accueil">
-          <div class="card-body">
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type=email class="form-control" id="email" name="email" placeholder="Entrer email">
-            </div>
-            
-            <div class="form-group">
-              <label for="mdp">Password</label>
-              <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Entrer mot de passe">
-          </div>
-
-          <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-block">
-              Login
-            </button>
-          </div>
+        <form method="POST" action="/login">
+          <input type="email" name="email" placeholder="Email" required>
+          <input type="password" name="password" placeholder="Mot de passe" required>
+          <button type="submit">Login</button>
         </form>
+
+        <?php if (!empty($error)): ?>
+          <p style="color:red"><?= htmlspecialchars($error) ?></p>
+        <?php endif; ?>
+
 
       </div>
 
     </div>
   </div>
 </div>
-

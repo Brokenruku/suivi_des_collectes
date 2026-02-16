@@ -1,64 +1,74 @@
-CREATE DATABASE "4064_4078_4107";
-\c "4064_4078_4107"
+CREATE DATABASE IF NOT EXISTS 4064_4078_4107
+  DEFAULT CHARACTER SET utf8mb4
+  DEFAULT COLLATE utf8mb4_unicode_ci;
+
+USE 4064_4078_4107;
 
 CREATE TABLE users (
-    id SERIAL PRIMARY KEY,
-    nom VARCHAR(100),
-    mdp VARCHAR(100),
-    mail VARCHAR(100),
-    numero VARCHAR(100)
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(100),
+  mdp VARCHAR(100),
+  mail VARCHAR(100),
+  numero VARCHAR(100)
 );
 
 CREATE TABLE region (
-    id SERIAL PRIMARY KEY,
-    nom VARCHAR(50)
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(50)
 );
 
 CREATE TABLE ville (
-    id SERIAL PRIMARY KEY,
-    nom VARCHAR(50),
-    id_region INTEGER REFERENCES region(id)
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(50),
+  id_region INT,
+  FOREIGN KEY (id_region) REFERENCES region(id)
 );
 
 CREATE TABLE besoin_nature (
-    id SERIAL PRIMARY KEY,
-    nom VARCHAR(100),
-    id_ville INTEGER REFERENCES ville(id)
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(100),
+  id_ville INT,
+  FOREIGN KEY (id_ville) REFERENCES ville(id)
 );
 
 CREATE TABLE besoin_materiaux (
-    id SERIAL PRIMARY KEY,
-    nom VARCHAR(100),
-    id_ville INTEGER REFERENCES ville(id)
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(100),
+  id_ville INT,
+  FOREIGN KEY (id_ville) REFERENCES ville(id)
 );
 
 CREATE TABLE besoin_argent (
-    id SERIAL PRIMARY KEY,
-    vola DOUBLE PRECISION,
-    id_ville INTEGER UNIQUE REFERENCES ville(id)
-);
- 
-CREATE TABLE dons (
-    id SERIAL PRIMARY KEY,
-    id_users INTEGER REFERENCES users(id),
-    date timestamp default current_timestamp
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  vola DOUBLE,
+  id_ville INT UNIQUE,
+  FOREIGN KEY (id_ville) REFERENCES ville(id)
 );
 
+CREATE TABLE dons (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  id_users INT,
+  date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_users) REFERENCES users(id)
+);
 
 CREATE TABLE dons_nature (
-    id SERIAL PRIMARY KEY,
-    nom VARCHAR(100),
-    id_dons INTEGER REFERENCES dons(id)
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(100),
+  id_dons INT,
+  FOREIGN KEY (id_dons) REFERENCES dons(id)
 );
 
 CREATE TABLE dons_materiaux (
-    id SERIAL PRIMARY KEY,
-    nom VARCHAR(100),
-    id_dons INTEGER REFERENCES dons(id)
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nom VARCHAR(100),
+  id_dons INT,
+  FOREIGN KEY (id_dons) REFERENCES dons(id)
 );
 
 CREATE TABLE dons_argent (
-    id SERIAL PRIMARY KEY,
-    vola DOUBLE PRECISION,
-    id_dons INTEGER UNIQUE REFERENCES dons(id)
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  vola DOUBLE,
+  id_dons INT UNIQUE,
+  FOREIGN KEY (id_dons) REFERENCES dons(id)
 );

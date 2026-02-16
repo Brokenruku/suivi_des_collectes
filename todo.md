@@ -1,5 +1,5 @@
 CONCEPTION BASE DE DONNE 
-    postgress
+    mysql
         TABLE 
             users 
             region

@@ -1,38 +1,20 @@
 <?php
-
 namespace app\models;
+
+use PDO;
 
 class UserModel
 {
-  public static function getAllExcept(int $excludedId): array
-  {
-    $db = \Flight::db();
-    $excludedId = (int) $excludedId;
+    public static function checkLogin(PDO $pdo, string $email, string $mdp): ?array
+    {
+        $sql = "SELECT * FROM users WHERE mail = :mail AND mdp = :mdp LIMIT 1";
+        $stmt = $pdo->prepare($sql);
+        $stmt->execute([
+            ':mail' => $email,
+            ':mdp'  => $mdp
+        ]);
 
-    $sql = "SELECT id, nom FROM users WHERE id <> $excludedId ORDER BY nom";
-    $res = mysqli_query($db, $sql);
-
-    $rows = [];
-    if ($res) {
-      while ($row = mysqli_fetch_assoc($res)) {
-        $rows[] = $row;
-      }
+        $user = $stmt->fetch(PDO::FETCH_ASSOC);
+        return $user ?: null;
     }
-    return $rows;
-  }
-
-  public static function getById(int $id): ?array
-  {
-    $db = \Flight::db();
-    $id = (int) $id;
-
-    $sql = "SELECT id, nom FROM users WHERE id = $id LIMIT 1";
-    $res = mysqli_query($db, $sql);
-
-    if ($res) {
-      $row = mysqli_fetch_assoc($res);
-      return $row ?: null;
-    }
-    return null;
-  }
 }

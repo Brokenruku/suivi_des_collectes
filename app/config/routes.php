@@ -1,28 +1,27 @@
 <?php
 
-use app\middlewares\SecurityHeadersMiddleware;
-use app\controllers\ObjectController;
-use flight\Engine;
-use flight\net\Router;
+use app\controllers\LoginController;
 use app\controllers\AccueilController;
+use app\middlewares\SecurityHeadersMiddleware;
 
+$router = Flight::router();
+$base = Flight::request()->base;
 
-/** 
- * @var Router $router 
- * @var Engine $app
- */
+$router->group('', function () use ($base) {
 
-$base = \Flight::get('flight.base_url');
+    Flight::route('GET /', function () use ($base) {
+        Flight::redirect($base . '/login');
+    });
 
-$router->group('', function (Router $router) use ($base) {
+    Flight::route('GET /login', [LoginController::class, 'showLogin']);
 
-  Flight::route('GET /accueil', [AccueilController::class, 'index']);
+    Flight::route('POST /login', [LoginController::class, 'login']);
 
-  Flight::route('GET /', function () use ($base) {
-    Flight::redirect($base . '/login');
-  });
+    Flight::route('GET /accueil', [AccueilController::class, 'index']);
 
-  Flight::route('GET /login', function () {
-    Flight::render('login');
-  });
+    Flight::route('GET /logout', function () use ($base) {
+        session_destroy();
+        Flight::redirect($base . '/login');
+    });
+
 }, [SecurityHeadersMiddleware::class]);

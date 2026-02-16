@@ -17,14 +17,13 @@ if (session_status() === PHP_SESSION_NONE) {
 }
 
 $app->map('db', function () {
-
   $host = 'localhost';
-  $port = '5432';
+  $port = '3306';
   $dbname = '4064_4078_4107';
-  $user = 'postgres';
-  $pass = 'cristelle31';
+  $user = 'root';
+  $pass = ''; 
 
-  $dsn = "pgsql:host=$host;port=$port;dbname=$dbname;";
+  $dsn = "mysql:host=$host;port=$port;dbname=$dbname;charset=utf8mb4";
   $pdo = new PDO($dsn, $user, $pass);
 
   $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
@@ -32,5 +31,6 @@ $app->map('db', function () {
 
   return $pdo;
 });
+
 
 
