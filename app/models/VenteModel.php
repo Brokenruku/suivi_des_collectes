@@ -133,12 +133,13 @@ class VenteModel
 
         foreach ($nature as $idObjet => $qte) {
             $stock = $this->stockNature((int)$idObjet);
-            $besoinRestant = $this->besoinRestantNature((int)$idObjet);
+            $besoinRestant = $this->besoinRestantNature((int)$idObjet) + 1;
             $vendable = $stock - $besoinRestant;
 
             if ($vendable < 0) $vendable = 0;
 
             if ($qte > $vendable) {
+                $vendable = $vendable;
                 throw new Exception(
                     "Vente impossible (Nature ID $idObjet). " .
                         "Stock: $stock, Besoin restant global: $besoinRestant, Max vendable: $vendable."
@@ -148,7 +149,7 @@ class VenteModel
 
         foreach ($mats as $idObjet => $qte) {
             $stock = $this->stockMateriaux((int)$idObjet);
-            $besoinRestant = $this->besoinRestantMateriaux((int)$idObjet);
+            $besoinRestant = $this->besoinRestantMateriaux((int)$idObjet) + 1;
             $exces = $stock - $besoinRestant;
             if ($qte > $exces) {
                 throw new Exception("Vente impossible (matériaux ID $idObjet). Stock: $stock, besoin restant: $besoinRestant, excès vendable: $exces.");
