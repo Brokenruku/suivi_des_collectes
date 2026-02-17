@@ -120,3 +120,30 @@ CREATE TABLE achat_lignes (
   FOREIGN KEY (id_achat) REFERENCES achats(id) ON DELETE CASCADE
 );
 
+CREATE TABLE reduction_vente (
+  id SERIAL PRIMARY KEY,
+  pourcentage DOUBLE PRECISION
+);
+
+CREATE TABLE vendu (
+  id SERIAL PRIMARY KEY,
+  id_users INT,
+  date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (id_users) REFERENCES users(id)
+);
+
+CREATE TABLE vendu_nature(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  id_dons_nature INT,
+  id_dons INT,
+  FOREIGN KEY (id_dons) REFERENCES dons(id),
+  FOREIGN KEY (id_dons_nature) REFERENCES id_dons_nature(id)
+);
+
+CREATE TABLE vendu_materiaux(
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  id_dons_materiaux INT,
+  id_dons INT,
+  FOREIGN KEY (id_dons) REFERENCES dons(id),
+  FOREIGN KEY (id_dons_materiaux) REFERENCES dons_materiaux(id)
+);
