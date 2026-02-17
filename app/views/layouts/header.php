@@ -16,9 +16,10 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="navbar-nav ms-auto">
+                <div class="navbar-nav ms-auto"> 
                     <?php if (!empty($_SESSION['user'])): ?>
                         <a class="nav-link" href="/accueil">Accueil</a>
+                        <a href="/admin/localites" class="nav-link">Ajouter région/ville</a>
                         <a class="nav-link" href="/achats">Achats</a>
                         <a class="nav-link" href="/don">Faire un Don</a>
                         <a class="nav-link" href="/recap">Récapitulatif</a>

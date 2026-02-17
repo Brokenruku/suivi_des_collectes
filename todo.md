@@ -20,7 +20,7 @@ CONCEPTION BASE DE DONNEES
             achat_lignes 4107
                 lignes detaillees des achats
         (OK) DONNEES 4078
-            insertion.sql donnees test pour chaque table
+            donnees test pour chaque table
 
 ARCHITECTURE PHP
     (OK) AUTHENTIFICATION 4078
