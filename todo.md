@@ -118,3 +118,7 @@ ARCHITECTURE PHP
                 graphiques besoins satisfaction par type
                 statistiques dons vs achats
                 tableau comparatif region/besoins/dons/achats
+
+DESIGN
+    (OK) ajout des icones dans les pages
+    
