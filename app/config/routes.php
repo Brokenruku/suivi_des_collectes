@@ -6,6 +6,10 @@ use app\controllers\DonController;
 use app\controllers\AchatController;
 use app\controllers\RecapController;
 use app\controllers\LocaliteController;
+use app\controllers\BesoinController;
+
+Flight::route('GET /besoins', [BesoinController::class, 'form']);
+Flight::route('POST /besoins', [BesoinController::class, 'store']);
 
 Flight::route('GET /admin/localites', [LocaliteController::class, 'index']);
 Flight::route('POST /admin/localites', [LocaliteController::class, 'store']);

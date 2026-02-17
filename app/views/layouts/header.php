@@ -20,11 +20,10 @@
                     <?php if (!empty($_SESSION['user'])): ?>
                         <a class="nav-link" href="/accueil">Accueil</a>
                         <a href="/admin/localites" class="nav-link">Ajouter région/ville</a>
+                        <a href="/besoins" class="nav-link">Ajouter besoins</a>
                         <a class="nav-link" href="/achats">Achats</a>
                         <a class="nav-link" href="/don">Faire un Don</a>
                         <a class="nav-link" href="/recap">Récapitulatif</a>
-                        <div class="vr bg-light mx-2"></div>
-
 
                         <a class="nav-link text-danger fw-semibold" href="/logout" style="transition: 0.2s;">
                             Déconnexion
