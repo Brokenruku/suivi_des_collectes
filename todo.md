@@ -86,6 +86,12 @@ ARCHITECTURE PHP
     (OK) RESET 4078
         (OK) ResetController 4078
             reset() - vide les tableaux
+
+    (OK) REDUCTION 4078
+        (OK) ReductionController 4078
+            ChangeReduction() - appelle setReductionPourcentage()
+        (OK) ReductionModel() 4078
+            setReductionPourcentage - update la valeur de reduction dans la table
     
     (OK) PRESENTATION ALL
         (OK) Layouts
@@ -141,6 +147,9 @@ ARCHITECTURE PHP
 
             (OK) vendre.php 4064
                 formulaire de vente de materiaux
+
+            (OK) reduction.php
+                formulaire pour changer le taux de reduction
 
 DESIGN
     (OK) ajout des icones dans les pages 4107
