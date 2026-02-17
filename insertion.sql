@@ -1,3 +1,15 @@
+INSERT INTO region (nom) VALUES
+('Analamanga'),
+('Atsinanana'),
+('Haute Matsiatra');
+
+INSERT INTO objet_nature (nom, id_region) VALUES
+('Antananarivo', 1),
+('Toamasina', 2),
+('Fianarantsoa', 3),
+('Ambohidratrimo', 1),
+('Vohipeno', 3);
+
 INSERT INTO objet_nature (nom, prix_unitaire) VALUES
 ('Riz', 2500),
 ('Huile', 8000),
