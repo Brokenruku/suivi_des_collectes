@@ -9,9 +9,9 @@
 </head>
 
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark align-items-center">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/accueil">Suivi des Collectes</a>
+            <a class="navbar-brand" href="/accueil">BNGRC</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -22,7 +22,7 @@
                         <a class="nav-link" href="/achats">Achats</a>
                         <a class="nav-link" href="/don">Faire un Don</a>
                         <a class="nav-link" href="/recap">Récapitulatif</a>
-                        <div class="nav-divider mx-2"></div>
+                        <div class="vr bg-light mx-2"></div>
 
 
                         <a class="nav-link text-danger fw-semibold" href="/logout" style="transition: 0.2s;">

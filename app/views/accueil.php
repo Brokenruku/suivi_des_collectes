@@ -13,16 +13,6 @@
 
 <body class="bg-light">
 
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container">
-      <a class="navbar-brand" href="/accueil">BNGRC</a>
-
-      <div class="ms-auto">
-        <a class="btn btn-outline-light btn-sm" href="/logout">Déconnexion</a>
-      </div>
-    </div>
-  </nav>
-
   <div class="container py-4">
     <div class="d-flex align-items-center justify-content-between mb-3">
       <h1 class="h4 mb-0">Besoins par ville</h1>
