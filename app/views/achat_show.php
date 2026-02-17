@@ -5,14 +5,14 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Détails achat</title>
+  <title>Details achat</title>
   <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
 </head>
 <body class="bg-light">
 <div class="container py-5" style="max-width: 900px;">
 
   <div class="d-flex justify-content-between align-items-center mb-4">
-    <h2 class="mb-0 fw-semibold">Détails achat #<?= (int)$achat['id'] ?></h2>
+    <h2 class="mb-0 fw-semibold">Details achat #<?= (int)$achat['id'] ?></h2>
     <a href="/achats" class="btn btn-outline-secondary btn-sm">Retour</a>
   </div>
 
@@ -33,7 +33,7 @@
           <tr>
             <th>Type</th>
             <th>ID objet</th>
-            <th>Qté</th>
+            <th>Qte</th>
             <th>PU</th>
             <th>Montant</th>
           </tr>

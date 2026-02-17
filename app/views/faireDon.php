@@ -87,7 +87,7 @@
             </div>
 
             <div class="col-12 col-md-3">
-              <label class="form-label">Quantité</label>
+              <label class="form-label">Quantite</label>
               <input type="number" name="nature_qte[]" min="0" class="form-control">
             </div>
 
@@ -104,7 +104,7 @@
     <div class="card shadow-sm">
       <div class="card-header bg-white d-flex justify-content-between align-items-center">
         <div class="d-flex align-items-center gap-2">
-          <span class="fw-semibold">Objets matériaux</span>
+          <span class="fw-semibold">Objets materiaux</span>
         </div>
         <button type="button" class="btn btn-sm btn-primary" id="btnAddMat">
           Ajouter une ligne
@@ -126,7 +126,7 @@
             </div>
 
             <div class="col-12 col-md-3">
-              <label class="form-label">Quantité</label>
+              <label class="form-label">Quantite</label>
               <input type="number" name="mat_qte[]" min="0" class="form-control">
             </div>
 

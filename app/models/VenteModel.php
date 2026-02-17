@@ -105,7 +105,7 @@ class VenteModel
         $st = $this->pdo->prepare("SELECT prix_unitaire FROM objet_materiaux WHERE id=:id");
         $st->execute([':id' => $idObjet]);
         $v = $st->fetchColumn();
-        if ($v === false) throw new Exception("Objet matériaux introuvable.");
+        if ($v === false) throw new Exception("Objet materiaux introuvable.");
         return (float)$v;
     }
 
@@ -152,7 +152,7 @@ class VenteModel
             $besoinRestant = $this->besoinRestantMateriaux((int)$idObjet) + 1;
             $exces = $stock - $besoinRestant;
             if ($qte > $exces) {
-                throw new Exception("Vente impossible (matériaux ID $idObjet). Stock: $stock, besoin restant: $besoinRestant, excès vendable: $exces.");
+                throw new Exception("Vente impossible (materiaux ID $idObjet). Stock: $stock, besoin restant: $besoinRestant, excès vendable: $exces.");
             }
         }
 

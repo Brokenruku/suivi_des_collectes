@@ -67,11 +67,11 @@ class LoginController
     $success = UserModel::registerUser($pdo, $nom, $mail, $mdp, $numero);
 
     if ($success) {
-      Flight::render('register', ['success' => 'Inscription réussi! Vous pouvez maintenant vous connecter.']);
+      Flight::render('register', ['success' => 'Inscription reussi! Vous pouvez maintenant vous connecter.']);
       return;
     }
 
-    Flight::render('register', ['error' => 'Cet email est déjà utilisé']);
+    Flight::render('register', ['error' => 'Cet email est dejà utilise']);
   }
 }
 

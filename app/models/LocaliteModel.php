@@ -41,7 +41,7 @@ class LocaliteModel
         $stmt->execute([':n' => $nom, ':r' => $idRegion]);
         $id = $stmt->fetchColumn();
         if ($id) {
-            throw new Exception("Cette ville existe déjà dans cette région.");
+            throw new Exception("Cette ville existe dejà dans cette region.");
         }
 
         $stmt = $this->pdo->prepare("INSERT INTO ville (nom, id_region) VALUES (:n, :r)");

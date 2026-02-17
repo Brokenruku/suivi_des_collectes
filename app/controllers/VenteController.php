@@ -42,7 +42,7 @@ class VenteController
 
             Flight::render('vendre', [
                 'error' => null,
-                'success' => "Vente enregistrée. L'argent a été ajouté aux dons en argent.",
+                'success' => "Vente enregistree. L'argent a ete ajoute aux dons en argent.",
                 'natures' => $m->getObjetsNature(),
                 'mats' => $m->getObjetsMateriaux(),
                 'reduction' => $m->getReductionPourcentage(),

@@ -99,7 +99,7 @@ class AchatModel
         $stmt = $this->pdo->prepare("SELECT prix_unitaire FROM objet_materiaux WHERE id = :id");
         $stmt->execute([':id' => $idObjet]);
         $pu = $stmt->fetchColumn();
-        if ($pu === false) throw new Exception("Objet matériaux introuvable.");
+        if ($pu === false) throw new Exception("Objet materiaux introuvable.");
         return (float)$pu;
     }
 
@@ -137,7 +137,7 @@ class AchatModel
         foreach ($nature as $idObjet => $qte) {
             $reste = $restN[(int)$idObjet] ?? 0;
             if ($qte > $reste) {
-                throw new Exception("Quantité nature trop grande pour l'objet ID $idObjet. Reste: $reste.");
+                throw new Exception("Quantite nature trop grande pour l'objet ID $idObjet. Reste: $reste.");
             }
             $pu = $this->getPuNature((int)$idObjet);
             $montant = $pu * $qte;
@@ -148,7 +148,7 @@ class AchatModel
         foreach ($mats as $idObjet => $qte) {
             $reste = $restM[(int)$idObjet] ?? 0;
             if ($qte > $reste) {
-                throw new Exception("Quantité matériaux trop grande pour l'objet ID $idObjet. Reste: $reste.");
+                throw new Exception("Quantite materiaux trop grande pour l'objet ID $idObjet. Reste: $reste.");
             }
             $pu = $this->getPuMat((int)$idObjet);
             $montant = $pu * $qte;

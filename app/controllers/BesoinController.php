@@ -54,7 +54,7 @@ class BesoinController
                 'natures' => $model->getObjetsNature(),
                 'mats' => $model->getObjetsMateriaux(),
                 'error' => null,
-                'success' => "Besoins ajoutés avec succès.",
+                'success' => "Besoins ajoutes avec succès.",
             ]);
         } catch (Throwable $e) {
             Flight::render('besoins_form', [

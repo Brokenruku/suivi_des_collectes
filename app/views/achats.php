@@ -51,8 +51,8 @@
 
       <div class="card shadow-sm">
         <div class="card-header bg-white d-flex justify-content-between align-items-center">
-          <span class="fw-semibold">Créer un achat</span>
-          <span class="badge text-bg-secondary">Ville sélectionnée</span>
+          <span class="fw-semibold">Creer un achat</span>
+          <span class="badge text-bg-secondary">Ville selectionnee</span>
         </div>
 
         <div class="card-body">
@@ -82,7 +82,7 @@
                     </select>
                   </div>
                   <div class="col-4">
-                    <label class="form-label">Qté</label>
+                    <label class="form-label">Qte</label>
                     <input type="number" name="nature_qte[]" min="0" class="form-control" placeholder="0">
                   </div>
                   <div class="col-12">
@@ -94,7 +94,7 @@
 
             <div class="col-12 col-lg-6">
               <div class="d-flex justify-content-between align-items-center mb-2">
-                <div class="fw-semibold">Matériaux</div>
+                <div class="fw-semibold">Materiaux</div>
                 <button type="button" class="btn btn-sm btn-primary" id="btnAddMat">Ajouter</button>
               </div>
 
@@ -116,7 +116,7 @@
                     </select>
                   </div>
                   <div class="col-4">
-                    <label class="form-label">Qté</label>
+                    <label class="form-label">Qte</label>
                     <input type="number" name="mat_qte[]" min="0" class="form-control" placeholder="0">
                   </div>
                   <div class="col-12">
@@ -129,7 +129,7 @@
           </div>
 
           <div class="d-flex justify-content-end gap-2 mt-4">
-            <a href="/achats?ville=<?= (int)$villeId ?>" class="btn btn-outline-secondary">Réinitialiser</a>
+            <a href="/achats?ville=<?= (int)$villeId ?>" class="btn btn-outline-secondary">Reinitialiser</a>
             <button type="submit" class="btn btn-success">Valider l'achat</button>
           </div>
 
@@ -164,7 +164,7 @@
                 <td><?= htmlspecialchars((string)$a['total_argent']) ?></td>
                 <td><?= htmlspecialchars((string)$a['created_at']) ?></td>
                 <td class="text-end">
-                  <a class="btn btn-sm btn-outline-primary" href="/achats/<?= (int)$a['id'] ?>">Détails</a>
+                  <a class="btn btn-sm btn-outline-primary" href="/achats/<?= (int)$a['id'] ?>">Details</a>
                 </td>
               </tr>
             <?php endforeach; ?>

@@ -53,7 +53,7 @@ class DonController
                 'natures' => $natures,
                 'mats' => $mats,
                 'error' => null,
-                'success' => 'Don enregistré avec succès.',
+                'success' => 'Don enregistre avec succès.',
                 'warnings' => $res['warnings'] ?? []
             ]);
         } catch (\Throwable $e) {

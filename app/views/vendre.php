@@ -24,7 +24,7 @@
   <?php endif; ?>
 
   <div class="alert alert-info">
-    Réduction: <strong><?= htmlspecialchars((string)$reduction) ?>%</strong>
+    Reduction: <strong><?= htmlspecialchars((string)$reduction) ?>%</strong>
   </div>
 
   <form method="POST" action="/vendre" class="vstack gap-4">
@@ -52,7 +52,7 @@
                   </select>
                 </div>
                 <div class="col-4">
-                  <label class="form-label">Qté</label>
+                  <label class="form-label">Qte</label>
                   <input type="number" name="nature_qte[]" min="0" class="form-control" placeholder="0">
                 </div>
                 <div class="col-12">
@@ -67,7 +67,7 @@
       <div class="col-12 col-lg-6">
         <div class="card shadow-sm">
           <div class="card-header bg-white d-flex justify-content-between align-items-center">
-            <span class="fw-semibold">Matériaux</span>
+            <span class="fw-semibold">Materiaux</span>
             <button type="button" class="btn btn-sm btn-primary" id="btnAddMat">Ajouter</button>
           </div>
           <div class="card-body">
@@ -85,7 +85,7 @@
                   </select>
                 </div>
                 <div class="col-4">
-                  <label class="form-label">Qté</label>
+                  <label class="form-label">Qte</label>
                   <input type="number" name="mat_qte[]" min="0" class="form-control" placeholder="0">
                 </div>
                 <div class="col-12">

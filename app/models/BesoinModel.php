@@ -42,7 +42,7 @@ class BesoinModel
         $mats   = $this->mergeLines($matIds, $matQtes);
 
         if ($montantArgent <= 0 && count($nature) === 0 && count($mats) === 0) {
-            throw new Exception("Veuillez saisir au moins un besoin (argent, nature ou matériaux).");
+            throw new Exception("Veuillez saisir au moins un besoin (argent, nature ou materiaux).");
         }
 
         $this->pdo->beginTransaction();

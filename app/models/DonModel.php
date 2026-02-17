@@ -65,7 +65,7 @@ class DonModel
         if ($montant <= 0) throw new Exception("Montant invalide.");
         $warnings = [];
         if ($montant > $reste) {
-            $warnings[] = "Montant dépasse le besoin restant. Reste à couvrir: {$reste} Ar.";
+            $warnings[] = "Montant depasse le besoin restant. Reste à couvrir: {$reste} Ar.";
         }
 
         $this->pdo->beginTransaction();
@@ -87,10 +87,10 @@ class DonModel
     public function donnerNature(int $idUser, int $idObjet, int $qte): array
     {
         $reste = $this->restantNature($idObjet);
-        if ($qte <= 0) throw new Exception("Quantité invalide.");
+        if ($qte <= 0) throw new Exception("Quantite invalide.");
         $warnings = [];
         if ($qte > $reste) {
-            $warnings[] = "Quantité trop grande. Il ne reste que {$reste} à couvrir pour cet objet.";
+            $warnings[] = "Quantite trop grande. Il ne reste que {$reste} à couvrir pour cet objet.";
         }
 
         $this->pdo->beginTransaction();
@@ -115,10 +115,10 @@ class DonModel
     public function donnerMateriaux(int $idUser, int $idObjet, int $qte): array
     {
         $reste = $this->restantMateriaux($idObjet);
-        if ($qte <= 0) throw new Exception("Quantité invalide.");
+        if ($qte <= 0) throw new Exception("Quantite invalide.");
         $warnings = [];
         if ($qte > $reste) {
-            $warnings[] = "Quantité trop grande. Il ne reste que {$reste} à couvrir pour cet objet.";
+            $warnings[] = "Quantite trop grande. Il ne reste que {$reste} à couvrir pour cet objet.";
         }
 
         $this->pdo->beginTransaction();
@@ -156,7 +156,7 @@ class DonModel
         $hasMats   = count($mats) > 0;
 
         if (!$hasArgent && !$hasNature && !$hasMats) {
-            throw new Exception("Tu n'as rien donné.");
+            throw new Exception("Tu n'as rien donne.");
         }
 
         $warnings = [];
@@ -167,12 +167,12 @@ class DonModel
 
         foreach ($nature as $idObjet => $qte) {
             $reste = $this->restantNature((int)$idObjet);
-            if ($qte > $reste) $warnings[] = "Nature ID {$idObjet}: quantité trop grande. Reste: {$reste}.";
+            if ($qte > $reste) $warnings[] = "Nature ID {$idObjet}: quantite trop grande. Reste: {$reste}.";
         }
 
         foreach ($mats as $idObjet => $qte) {
             $reste = $this->restantMateriaux((int)$idObjet);
-            if ($qte > $reste) $warnings[] = "Matériaux ID {$idObjet}: quantité trop grande. Reste: {$reste}.";
+            if ($qte > $reste) $warnings[] = "Materiaux ID {$idObjet}: quantite trop grande. Reste: {$reste}.";
         }
 
         $this->pdo->beginTransaction();

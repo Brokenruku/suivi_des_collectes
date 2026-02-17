@@ -25,8 +25,8 @@
                     <input type="password" class="form-control" id="mdp" name="mdp" placeholder="Entrer votre mot de passe" required>
                 </div>
                 <div class="form-group mb-3">
-                    <label for="numero">Numéro de téléphone</label>
-                    <input type="text" class="form-control" id="numero" name="numero" placeholder="Entrer votre numéro">
+                    <label for="numero">Numero de telephone</label>
+                    <input type="text" class="form-control" id="numero" name="numero" placeholder="Entrer votre numero">
                 </div>
                 <?php if (!empty($error)): ?>
                   <div class="alert alert-danger"><?= htmlspecialchars($error) ?></div>

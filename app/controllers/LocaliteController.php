@@ -43,7 +43,7 @@ class LocaliteController
 
         try {
             if ($regionNom === '' && $villeNom === '') {
-                throw new Exception("Veuillez saisir au moins une région ou une ville.");
+                throw new Exception("Veuillez saisir au moins une region ou une ville.");
             }
 
             $newRegionId = 0;
@@ -54,7 +54,7 @@ class LocaliteController
             if ($villeNom !== '') {
                 $finalRegionId = $newRegionId > 0 ? $newRegionId : $regionId;
                 if ($finalRegionId <= 0) {
-                    throw new Exception("Pour créer une ville, sélectionnez une région ou créez-en une.");
+                    throw new Exception("Pour creer une ville, selectionnez une region ou creez-en une.");
                 }
                 $model->createVille($villeNom, $finalRegionId);
             }
@@ -63,7 +63,7 @@ class LocaliteController
             Flight::render('localites', [
                 'regions' => $regions,
                 'error' => null,
-                'success' => "Enregistrement effectué avec succès.",
+                'success' => "Enregistrement effectue avec succès.",
             ]);
         } catch (Throwable $e) {
             $regions = $model->getRegions();
