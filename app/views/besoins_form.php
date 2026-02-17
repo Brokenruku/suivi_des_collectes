@@ -27,7 +27,7 @@
   <form method="POST" action="/besoins" class="vstack gap-4">
 
     <div class="card shadow-sm">
-      <div class="card-header bg-white fw-semibold">Ville</div>
+      <div class="card-header bg-white fw-semibold"><i class="bi bi-geo-alt-fill"></i> Ville</div>
       <div class="card-body">
         <select name="id_ville" class="form-select" required>
           <option value="">-- choisir --</option>
@@ -39,7 +39,7 @@
     </div>
 
     <div class="card shadow-sm">
-      <div class="card-header bg-white fw-semibold">Besoin en argent (optionnel)</div>
+      <div class="card-header bg-white fw-semibold"><i class="bi bi-wallet"></i> Besoin en argent</div>
       <div class="card-body">
         <div class="input-group">
           <span class="input-group-text">Ar</span>
@@ -53,7 +53,7 @@
       <div class="col-12 col-lg-6">
         <div class="card shadow-sm">
           <div class="card-header bg-white d-flex justify-content-between align-items-center">
-            <span class="fw-semibold">Besoins nature</span>
+            <span class="fw-semibold"><i class="bi bi-leaf-fill"></i> Besoins nature</span>
             <button type="button" class="btn btn-sm btn-primary" id="btnAddNature">Ajouter</button>
           </div>
           <div class="card-body">
@@ -84,7 +84,7 @@
       <div class="col-12 col-lg-6">
         <div class="card shadow-sm">
           <div class="card-header bg-white d-flex justify-content-between align-items-center">
-            <span class="fw-semibold">Besoins matériaux</span>
+            <span class="fw-semibold"><i class="bi bi-distribute-vertical"></i> Besoins matériaux</span>
             <button type="button" class="btn btn-sm btn-primary" id="btnAddMat">Ajouter</button>
           </div>
           <div class="card-body">

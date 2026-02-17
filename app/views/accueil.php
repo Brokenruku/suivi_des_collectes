@@ -9,13 +9,15 @@
   <title>Accueil</title>
 
   <link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
+  <link href="/assets/bootstrap/css/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="/assets/bootstrap/css/bootstrap-icons/font/bootstrap-icons.min.css" rel="stylesheet">
 </head>
 
 <body class="bg-light">
 
   <div class="container py-4">
     <div class="d-flex align-items-center justify-content-between mb-3">
-      <h1 class="h4 mb-0">Besoins par ville</h1>
+      <h1 class="h4 mb-0">Besoins par ville</h1> <i class="bi bi-bag"></i>
     </div>
 
     <div class="row g-3">
@@ -30,7 +32,7 @@
         <div class="col-12 col-md-6 col-lg-4">
           <div class="card shadow-sm h-100">
             <div class="card-body">
-              <h5 class="card-title mb-1"><?= htmlspecialchars($v['ville'] ?? '') ?></h5>
+              <h5 class="card-title mb-1"><i class="bi bi-geo-alt-fill"></i> <?= htmlspecialchars($v['ville'] ?? '') ?></h5>
               <p class="text-muted mb-3"><?= htmlspecialchars($v['region'] ?? '') ?></p>
 
               <div class="mb-3">
@@ -62,14 +64,14 @@
               <div>
                 <div class="fw-semibold">Besoin argent</div>
                 <div class="<?= $argent ? 'text-danger fw-bold' : 'text-muted' ?>">
-                  <?= $argent ? number_format((float)$argent, 0, ',', ' ') . ' Ar' : 'Aucun' ?>
+                  <i class="bi bi-wallet"></i> <?= $argent ? number_format((float)$argent, 0, ',', ' ') . ' Ar' : 'Aucun' ?>
                 </div>
               </div>
-              
+
               <div class="mt-3">
                 <div class="fw-semibold">Achats réalisés</div>
                 <div class="<?= $achats > 0 ? 'text-primary fw-bold' : 'text-muted' ?>">
-                  <?= $achats > 0 ? number_format((float)$achats, 0, ',', ' ') . ' Ar' : 'Aucun' ?>
+                  <i class="bi bi-piggy-bank-fill"></i> <?= $achats > 0 ? number_format((float)$achats, 0, ',', ' ') . ' Ar' : 'Aucun' ?>
                 </div>
 
                 <a class="btn btn-outline-primary btn-sm mt-2"

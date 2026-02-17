@@ -27,7 +27,7 @@
   <form method="POST" action="/admin/localites" class="vstack gap-4">
 
     <div class="card shadow-sm">
-      <div class="card-header bg-white fw-semibold">Créer une région</div>
+      <div class="card-header bg-white fw-semibold"><i class="bi bi-compass-fill"></i> Créer une région</div>
       <div class="card-body">
         <label class="form-label">Nom de la région</label>
         <input type="text" name="region_nom" class="form-control">
@@ -35,7 +35,7 @@
     </div>
 
     <div class="card shadow-sm">
-      <div class="card-header bg-white fw-semibold">Créer une ville</div>
+      <div class="card-header bg-white fw-semibold"><i class="bi bi-geo-alt-fill"></i> Créer une ville</div>
       <div class="card-body">
         <div class="row g-3">
           <div class="col-12 col-md-6">
