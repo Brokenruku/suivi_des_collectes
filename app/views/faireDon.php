@@ -25,6 +25,22 @@
     </div>
   <?php endif; ?>
 
+  <?php if (!empty($success)): ?>
+    <div class="alert alert-success mb-4">
+      <?= htmlspecialchars($success) ?>
+    </div>
+  <?php endif; ?>
+
+  <?php if (!empty($warnings) && is_array($warnings)): ?>
+    <div class="alert alert-warning mb-4">
+      <ul class="mb-0">
+        <?php foreach ($warnings as $w): ?>
+          <li><?= htmlspecialchars($w) ?></li>
+        <?php endforeach; ?>
+      </ul>
+    </div>
+  <?php endif; ?>
+
   <form method="POST" action="/don" class="vstack gap-4">
 
     <div class="card shadow-sm">

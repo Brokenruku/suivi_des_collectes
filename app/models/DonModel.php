@@ -59,11 +59,14 @@ class DonModel
         return (int)$this->pdo->lastInsertId();
     }
 
-    public function donnerArgent(int $idUser, float $montant): void
+    public function donnerArgent(int $idUser, float $montant): array
     {
         $reste = $this->restantArgent();
         if ($montant <= 0) throw new Exception("Montant invalide.");
-        if ($montant > $reste) throw new Exception("Montant trop grand. Il ne reste que {$reste} Ar à couvrir.");
+        $warnings = [];
+        if ($montant > $reste) {
+            $warnings[] = "Montant dépasse le besoin restant. Reste à couvrir: {$reste} Ar.";
+        }
 
         $this->pdo->beginTransaction();
         try {
@@ -73,17 +76,22 @@ class DonModel
             $stmt->execute([':v' => $montant, ':d' => $idDon]);
 
             $this->pdo->commit();
+
+            return ['success' => true, 'id_don' => $idDon, 'warnings' => $warnings];
         } catch (Throwable $e) {
             $this->pdo->rollBack();
             throw $e;
         }
     }
 
-    public function donnerNature(int $idUser, int $idObjet, int $qte): void
+    public function donnerNature(int $idUser, int $idObjet, int $qte): array
     {
         $reste = $this->restantNature($idObjet);
         if ($qte <= 0) throw new Exception("Quantité invalide.");
-        if ($qte > $reste) throw new Exception("Quantité trop grande. Il ne reste que {$reste} à couvrir pour cet objet.");
+        $warnings = [];
+        if ($qte > $reste) {
+            $warnings[] = "Quantité trop grande. Il ne reste que {$reste} à couvrir pour cet objet.";
+        }
 
         $this->pdo->beginTransaction();
         try {
@@ -96,17 +104,22 @@ class DonModel
             $stmt->execute([':o' => $idObjet, ':d' => $idDon, ':q' => $qte]);
 
             $this->pdo->commit();
+
+            return ['success' => true, 'id_don' => $idDon, 'warnings' => $warnings];
         } catch (Throwable $e) {
             $this->pdo->rollBack();
             throw $e;
         }
     }
 
-    public function donnerMateriaux(int $idUser, int $idObjet, int $qte): void
+    public function donnerMateriaux(int $idUser, int $idObjet, int $qte): array
     {
         $reste = $this->restantMateriaux($idObjet);
         if ($qte <= 0) throw new Exception("Quantité invalide.");
-        if ($qte > $reste) throw new Exception("Quantité trop grande. Il ne reste que {$reste} à couvrir pour cet objet.");
+        $warnings = [];
+        if ($qte > $reste) {
+            $warnings[] = "Quantité trop grande. Il ne reste que {$reste} à couvrir pour cet objet.";
+        }
 
         $this->pdo->beginTransaction();
         try {
@@ -119,6 +132,8 @@ class DonModel
             $stmt->execute([':o' => $idObjet, ':d' => $idDon, ':q' => $qte]);
 
             $this->pdo->commit();
+
+            return ['success' => true, 'id_don' => $idDon, 'warnings' => $warnings];
         } catch (Throwable $e) {
             $this->pdo->rollBack();
             throw $e;
@@ -132,7 +147,7 @@ class DonModel
         array $natureQtes,
         array $matIds,
         array $matQtes
-    ): void {
+    ): array {
         $nature = $this->mergeLines($natureIds, $natureQtes);
         $mats   = $this->mergeLines($matIds, $matQtes);
 
@@ -144,19 +159,20 @@ class DonModel
             throw new Exception("Tu n'as rien donné.");
         }
 
+        $warnings = [];
         if ($hasArgent) {
             $reste = $this->restantArgent();
-            if ($montant > $reste) throw new Exception("Montant trop grand. Reste à couvrir: {$reste} Ar.");
+            if ($montant > $reste) $warnings[] = "Montant trop grand. Reste à couvrir: {$reste} Ar.";
         }
 
         foreach ($nature as $idObjet => $qte) {
             $reste = $this->restantNature((int)$idObjet);
-            if ($qte > $reste) throw new Exception("Nature ID {$idObjet}: quantité trop grande. Reste: {$reste}.");
+            if ($qte > $reste) $warnings[] = "Nature ID {$idObjet}: quantité trop grande. Reste: {$reste}.";
         }
 
         foreach ($mats as $idObjet => $qte) {
             $reste = $this->restantMateriaux((int)$idObjet);
-            if ($qte > $reste) throw new Exception("Matériaux ID {$idObjet}: quantité trop grande. Reste: {$reste}.");
+            if ($qte > $reste) $warnings[] = "Matériaux ID {$idObjet}: quantité trop grande. Reste: {$reste}.";
         }
 
         $this->pdo->beginTransaction();
@@ -189,6 +205,8 @@ class DonModel
             }
 
             $this->pdo->commit();
+
+            return ['success' => true, 'id_don' => $idDon, 'warnings' => $warnings];
         } catch (Throwable $e) {
             $this->pdo->rollBack();
             throw $e;

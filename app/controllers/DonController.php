@@ -44,8 +44,18 @@ class DonController
         $matQtes = $_POST['mat_qte'] ?? [];
 
         try {
-            $donModel->donnerMixte($idUser, $montant, $natureIds, $natureQtes, $matIds, $matQtes);
-            Flight::redirect('/accueil');
+            $res = $donModel->donnerMixte($idUser, $montant, $natureIds, $natureQtes, $matIds, $matQtes);
+
+            $natures = $pdo->query("SELECT id, nom FROM objet_nature ORDER BY nom")->fetchAll();
+            $mats    = $pdo->query("SELECT id, nom FROM objet_materiaux ORDER BY nom")->fetchAll();
+
+            Flight::render('faireDon', [
+                'natures' => $natures,
+                'mats' => $mats,
+                'error' => null,
+                'success' => 'Don enregistré avec succès.',
+                'warnings' => $res['warnings'] ?? []
+            ]);
         } catch (\Throwable $e) {
             $natures = $pdo->query("SELECT id, nom FROM objet_nature ORDER BY nom")->fetchAll();
             $mats    = $pdo->query("SELECT id, nom FROM objet_materiaux ORDER BY nom")->fetchAll();
@@ -53,7 +63,9 @@ class DonController
             Flight::render('faireDon', [
                 'natures' => $natures,
                 'mats' => $mats,
-                'error' => $e->getMessage()
+                'error' => $e->getMessage(),
+                'success' => null,
+                'warnings' => []
             ]);
         }
     }
