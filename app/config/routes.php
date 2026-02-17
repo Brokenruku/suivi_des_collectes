@@ -8,6 +8,7 @@ use app\controllers\RecapController;
 use app\controllers\LocaliteController;
 use app\controllers\BesoinController;
 use app\controllers\VenteController;
+use app\controllers\ResetController;
 
 Flight::route('GET /vendre', [VenteController::class, 'form']);
 Flight::route('POST /vendre', [VenteController::class, 'store']);
@@ -37,6 +38,8 @@ Flight::route('POST /register', [LoginController::class, 'register']);
 
 Flight::route('GET /don', [DonController::class, 'form']);
 Flight::route('POST /don', [DonController::class, 'submit']);
+
+Flight::route('POST /reinitialiser', [ResetController::class, 'reset']);
 
 Flight::route('GET /accueil', [AccueilController::class, 'index']);
 

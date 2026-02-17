@@ -18,7 +18,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <div class="navbar-nav ms-auto"> 
+                <div class="navbar-nav ms-auto">
                     <?php if (!empty($_SESSION['user'])): ?>
                         <a class="nav-link" href="/accueil"><i class="bi bi-house-door-fill"></i> Accueil</a>
                         <a href="/admin/localites" class="nav-link">Ajouter région/ville</a>
@@ -38,4 +38,14 @@
             </div>
         </div>
     </nav>
+    <div>
+        <form action="/reinitialiser" method="POST" class="m-3"
+            onsubmit="return confirm('Continuer ?');">
+            <button type="submit" class="btn btn-lg btn-warning fw-bold">
+                REINITIALISER
+            </button>
+        </form>
+    </div>
+
+    </main>
     <main class="py-4">
