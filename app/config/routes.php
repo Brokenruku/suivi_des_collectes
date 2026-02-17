@@ -9,6 +9,7 @@ use app\controllers\LocaliteController;
 use app\controllers\BesoinController;
 use app\controllers\VenteController;
 use app\controllers\ResetController;
+use app\controllers\ReductionController;
 
 Flight::route('GET /vendre', [VenteController::class, 'form']);
 Flight::route('POST /vendre', [VenteController::class, 'store']);
@@ -40,6 +41,12 @@ Flight::route('GET /don', [DonController::class, 'form']);
 Flight::route('POST /don', [DonController::class, 'submit']);
 
 Flight::route('POST /reinitialiser', [ResetController::class, 'reset']);
+
+Flight::route('GET /reduction', function () {
+    Flight::render('reduction');
+});
+
+Flight::route('POST /reduction', [ReductionController::class, 'ChangeReduction']);
 
 Flight::route('GET /accueil', [AccueilController::class, 'index']);
 

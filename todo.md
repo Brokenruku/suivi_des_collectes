@@ -53,6 +53,19 @@ ARCHITECTURE PHP
             getAchats() - SELECT achats joins ville/utilisateur
             createAchat() - INSERT achat + achat_lignes
             getAchatById() - recupere achat avec details
+
+    (OK) VENTE 4064
+        (OK) VenteController 4064
+            form() - appelle les getters nature, materiaux, reduction
+            store() - appelle la methode vendre
+        (OK) VenteModel 4064
+            les getters des objects natures et materiaux
+            stockNature() - mamerina tableau nature disponible dans dons
+            stockMateriau() - mamerina tableau materiaux disponible dans dons
+            besoinRestantMateriaux() - calcul les besoins materiaux restants
+            prixMateriaux() - prend le PU materiaux
+            mergeLines() - retourne un tableau de total de qte des objets
+            vendreMixte() - insertion dans vente et/ou venteligne les objets concernees
     
     (OK) VILLES ET BESOINS 4064
         (OK) VilleModel 4064
@@ -66,7 +79,13 @@ ARCHITECTURE PHP
             data() - retourne JSON donnees pour graphiques
         (OK) RecapModel 4064 
             getBesoinsVsDons() - compare besoins satisfaits vs non satisfaits
-            getStatistiques() - totaux dons/achats par type
+            getStatistiques() - totaux dons/achats par type 
+        (OK) correction : inserer meme si ca depasse les besoins 4078
+        (OK) affichage liste des dons nature et materiaux 4078
+
+    (OK) RESET 4078
+        (OK) ResetController 4078
+            reset() - vide les tableaux
     
     (OK) PRESENTATION ALL
         (OK) Layouts
@@ -74,6 +93,7 @@ ARCHITECTURE PHP
                 barre navigation avec liens accueil/achats/dons/recap
                 affichage nom utilisateur connecte
                 boutons login/register si non authentifie
+                bouttons REINITIALISE 
             (OK) footer 4078
                 scripts bootstrap
         (OK) Vues
@@ -119,6 +139,9 @@ ARCHITECTURE PHP
                 statistiques dons vs achats
                 tableau comparatif region/besoins/dons/achats
 
+            (OK) vendre.php 4064
+                formulaire de vente de materiaux
+
 DESIGN
-    (OK) ajout des icones dans les pages
+    (OK) ajout des icones dans les pages 4107
     

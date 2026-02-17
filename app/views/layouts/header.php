@@ -27,6 +27,7 @@
                         <a href="/vendre" class="nav-link"> Vendre</a>
                         <a class="nav-link" href="/don"><i class="bi bi-heart-half"></i> Faire un Don</a>
                         <a class="nav-link" href="/recap"><i class="bi bi-graph-up"></i> Récapitulatif</a>
+                        <a class="nav-link" href="/reduction"><i class="bi bi-percent"></i> Nouvelle Réduction</a>
 
                         <a class="nav-link text-danger fw-semibold" href="/logout" style="transition: 0.2s;"><i class="bi bi-box-arrow-left"></i> Déconnexion</a>
 
