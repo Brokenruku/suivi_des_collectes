@@ -21,6 +21,7 @@ CONCEPTION BASE DE DONNEES
                 lignes detaillees des achats
         (OK) DONNEES 4078
             donnees test pour chaque table
+        (OK) DONNEES DE BASE MR ROJO 4064
 
 ARCHITECTURE PHP
     (OK) AUTHENTIFICATION 4078
