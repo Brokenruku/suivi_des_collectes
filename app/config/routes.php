@@ -7,6 +7,10 @@ use app\controllers\AchatController;
 use app\controllers\RecapController;
 use app\controllers\LocaliteController;
 use app\controllers\BesoinController;
+use app\controllers\VenteController;
+
+Flight::route('GET /vendre', [VenteController::class, 'form']);
+Flight::route('POST /vendre', [VenteController::class, 'store']);
 
 Flight::route('GET /besoins', [BesoinController::class, 'form']);
 Flight::route('POST /besoins', [BesoinController::class, 'store']);

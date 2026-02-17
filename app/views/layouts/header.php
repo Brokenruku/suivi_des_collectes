@@ -22,6 +22,7 @@
                         <a href="/admin/localites" class="nav-link">Ajouter région/ville</a>
                         <a href="/besoins" class="nav-link">Ajouter besoins</a>
                         <a class="nav-link" href="/achats">Achats</a>
+                        <a href="/vendre" class="nav-link">Vendre</a>
                         <a class="nav-link" href="/don">Faire un Don</a>
                         <a class="nav-link" href="/recap">Récapitulatif</a>
 

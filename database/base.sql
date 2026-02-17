@@ -122,28 +122,29 @@ CREATE TABLE achat_lignes (
 
 CREATE TABLE reduction_vente (
   id SERIAL PRIMARY KEY,
-  pourcentage DOUBLE PRECISION
+  pourcentage DOUBLE PRECISION NOT NULL DEFAULT 0,
+  updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 
-CREATE TABLE vendu (
+INSERT INTO reduction_vente (pourcentage) VALUES (10);
+
+CREATE TABLE ventes (
   id SERIAL PRIMARY KEY,
-  id_users INT,
-  date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  id_users INT NOT NULL,
+  montant_brut DOUBLE PRECISION NOT NULL,
+  reduction_pourcentage DOUBLE PRECISION NOT NULL,
+  montant_net DOUBLE PRECISION NOT NULL,
+  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
   FOREIGN KEY (id_users) REFERENCES users(id)
 );
 
-CREATE TABLE vendu_nature(
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  id_dons_nature INT,
-  id_dons INT,
-  FOREIGN KEY (id_dons) REFERENCES dons(id),
-  FOREIGN KEY (id_dons_nature) REFERENCES id_dons_nature(id)
-);
-
-CREATE TABLE vendu_materiaux(
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  id_dons_materiaux INT,
-  id_dons INT,
-  FOREIGN KEY (id_dons) REFERENCES dons(id),
-  FOREIGN KEY (id_dons_materiaux) REFERENCES dons_materiaux(id)
+CREATE TABLE vente_lignes (
+  id SERIAL PRIMARY KEY,
+  id_vente BIGINT UNSIGNED NOT NULL,
+  type_objet VARCHAR(20) NOT NULL, 
+  id_objet INT NOT NULL,
+  qte INT NOT NULL,
+  prix_unitaire DOUBLE PRECISION NOT NULL,
+  montant DOUBLE PRECISION NOT NULL,
+  FOREIGN KEY (id_vente) REFERENCES ventes(id) ON DELETE CASCADE
 );
